@@ -7,7 +7,7 @@ import GameScreen from './pages/GameScreen'
 
 function App() {
   return (
-    <div>
+    <div className='main'>
       <Switch>
         <Route exact path="/" component={SplashScreen} />
         <Route path="/game" component={GameScreen}/>

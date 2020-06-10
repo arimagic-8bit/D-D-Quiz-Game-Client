@@ -1,38 +1,77 @@
-.App {
+@import url("https://fonts.googleapis.com/css2?family=Fredoka+One&family=Metal+Mania&family=Roboto:wght@400;900&display=swap");
+
+/* CSS for fonts
+
+font-family: 'Fredoka One', cursive;
+font-family: 'Metal Mania', cursive;
+font-family: 'Roboto', sans-serif;
+
+*/
+
+body {
+  font-family: "Roboto", sans-serif;
+  font-size: 20px;
+}
+
+.main {
+  height: 100vh;
+  background-image: url(https://res.cloudinary.com/dywatr6gy/image/upload/v1591784575/DnD/059_t4kfmw.png);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-color: rgb(255, 255, 255);
+}
+
+.splash-screen {
   text-align: center;
+  padding: 0 115px;
+  padding-top: 250px;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.splash-screen h1 {
+  font-family: "Fredoka One", cursive;
+  font-size: 35px;
+  width: fit-content;
+  margin: 0 auto;
+  margin-bottom: 70px;
+  padding: 15px;
+  background-color: rgb(241, 237, 237);
+  box-shadow: 0 3.8px 6.4px rgba(0, 0, 0, 0.049),
+    0 10.5px 17.8px rgba(0, 0, 0, 0.07), 0 25.3px 42.8px rgba(0, 0, 0, 0.091),
+    0 84px 142px rgba(0, 0, 0, 0.14);
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.dnd {
+  font-family: "Metal Mania", cursive;
+  font-size: 40px;
+  color: rgb(233, 16, 16);
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+.splash-screen p {
+  margin-bottom: 105px;
+  font-weight: bold;
+  letter-spacing: 1px;
+  line-height: 40px;
+}
+
+.start-btn {
+  display: inline-block;
+  background-color: rgb(216, 43, 43);
   color: white;
+  font-weight: bold;
+  text-decoration: none;
+  padding: 15px 25px;
+  cursor: pointer;
+  transition: 200ms;
 }
 
-.App-link {
-  color: #61dafb;
+.start-btn:hover,
+.start-btn:focus {
+  border: solid 5px rgb(0, 0, 0);
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.start-btn:active {
+  transform: scale(0.9);
+  box-shadow: 3px 2px 22px 1px rgba(0, 0, 0, 0.24);
 }
