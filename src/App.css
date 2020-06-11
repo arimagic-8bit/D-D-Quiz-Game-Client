@@ -8,6 +8,8 @@ font-family: 'Roboto', sans-serif;
 
 */
 
+/* SPLASH SCREEN */
+
 body {
   font-family: "Roboto", sans-serif;
   font-size: 20px;
@@ -74,4 +76,85 @@ body {
 .start-btn:active {
   transform: scale(0.9);
   box-shadow: 3px 2px 22px 1px rgba(0, 0, 0, 0.24);
+}
+
+/* GAME SCREEN */
+
+.question-container {
+  text-align: center;
+  padding: 5rem;
+}
+
+.red-container {
+  background: rgb(195, 34, 34);
+  background: linear-gradient(
+    0deg,
+    rgba(195, 34, 34, 1) 15%,
+    rgba(253, 69, 45, 1) 100%
+  );
+  padding: 2rem;
+  padding-bottom: 3.5rem;
+  border-radius: 20px;
+}
+
+.points {
+  background: rgb(150, 34, 195);
+  background: linear-gradient(
+    135deg,
+    rgba(150, 34, 195, 1) 15%,
+    rgba(45, 189, 253, 1) 100%
+  );
+  margin: 0 auto;
+  width: 20%;
+  padding: 10px;
+  border-radius: 30px;
+  font-size: 15px;
+  font-weight: bold;
+  letter-spacing: 2px;
+  color: white;
+}
+
+.white-container {
+  background-color: white;
+  margin-top: 15px;
+  padding: 15px;
+  border-radius: 10px;
+  box-shadow: 0 100px 80px rgba(0, 0, 0, 0.07);
+}
+
+.question-container img {
+  width: 50%;
+  margin: 2rem 0;
+}
+
+.number-question {
+  font-size: 13px;
+  font-weight: bold;
+  color: rgba(253, 69, 45, 1);
+  margin-bottom: 30px;
+  text-align: right;
+}
+
+.theQuestion {
+  font-weight: bold;
+  padding: 0 15px;
+  line-height: 30px;
+  letter-spacing: 2px;
+}
+
+.answers-container {
+  background-color: white;
+  padding: 20px 0;
+  margin: 0 auto;
+  width: 75vw;
+  border-radius: 10px;
+  box-shadow: 0 6.7px 5.3px rgba(0, 0, 0, 0.073),
+    0 22.3px 17.9px rgba(0, 0, 0, 0.108), 0 100px 80px rgba(0, 0, 0, 0.19);
+}
+
+.answers-container p {
+  margin-bottom: 20px;
+  font-size: 15px;
+  font-weight: bold;
+  color: rgb(136, 127, 127);
 }
