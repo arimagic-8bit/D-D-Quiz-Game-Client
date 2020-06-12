@@ -15,8 +15,14 @@ function QuestionConsumer(WrappedComponent) {
                         oneQuestion={valueFromProvider.oneQuestion}
                         answeredQuestions={valueFromProvider.answeredQuestions}
                         points={valueFromProvider.points}
+                        style={valueFromProvider.style}
+                        isAnswered={valueFromProvider.isAnswered}
+                        showButton={valueFromProvider.showButton}
                         getAllQuestions={valueFromProvider.getAllQuestions}
                         getRandomQuestion={valueFromProvider.getRandomQuestion}
+                        morePoints={valueFromProvider.morePoints}
+                        isCorrect={valueFromProvider.isCorrect}
+                        nextQuestion={valueFromProvider.nextQuestion}
                     />
                 )}
             </Consumer>
@@ -30,7 +36,10 @@ class QuestionProvider extends React.Component {
         questions: [],
         oneQuestion: {},
         answeredQuestions:[],
-        points: 0
+        points: 0,
+        style: ['answer', 'answer', 'answer'],
+        isAnswered: false,
+        showButton: false
     }
 
     getAllQuestions = () => {
@@ -56,15 +65,76 @@ class QuestionProvider extends React.Component {
             }
         }
     }
+    
+    morePoints = () => {
+        const {oneQuestion, points} = this.state;
+        let updatedPoints = points;
+        updatedPoints += oneQuestion.points
+        this.setState({points: updatedPoints})
+    }
+
+    isCorrect = (index) => {
+        const {style, isAnswered, oneQuestion, showButton} = this.state;
+
+        if(!isAnswered) {
+           const updateStyle = style
+            if (index === oneQuestion.correctAnswer) {
+                updateStyle[index] += ' ' + 'correct';
+                this.morePoints()
+            }
+            else {
+                updateStyle[index] += ' ' + 'incorrect';
+            } 
+            this.setState({isAnswered:!isAnswered, style:updateStyle, showButton:!showButton})
+        }
+    }
+
+    nextQuestion = () => {
+        const {isAnswered, showButton} = this.state;
+        const resetStyle = ['answer', 'answer', 'answer'];
+        this.setState({
+            isAnswered:!isAnswered, 
+            showButton:!showButton,
+            style: resetStyle
+        });
+        this.getRandomQuestion()
+    }
 
     render() {
 
-        const {questions, oneQuestion, answeredQuestions, points} = this.state;
+        const {
+            questions, 
+            oneQuestion, 
+            answeredQuestions, 
+            points, 
+            style, 
+            isAnswered,
+            showButton
+        } = this.state;
 
-        const {getAllQuestions, getRandomQuestion} = this;
+        const {
+            getAllQuestions, 
+            getRandomQuestion, 
+            morePoints, 
+            isCorrect, 
+            nextQuestion
+        } = this;
 
         return (
-            <Provider value={{questions, oneQuestion, answeredQuestions, points, getAllQuestions, getRandomQuestion}}>
+            <Provider value={{
+                questions, 
+                oneQuestion, 
+                answeredQuestions, 
+                points, 
+                style, 
+                isAnswered, 
+                showButton, 
+                getAllQuestions, 
+                getRandomQuestion, 
+                morePoints, 
+                isCorrect, 
+                nextQuestion
+                }}>
                 {this.props.children}
             </Provider>
         )

@@ -8,9 +8,18 @@ class GameScreen extends Component {
         this.props.getAllQuestions()
     }
 
-
     render() {
-        const {oneQuestion, questions, answeredQuestions, points} = this.props;
+        const {
+            oneQuestion, 
+            questions, 
+            answeredQuestions, 
+            points, 
+            style,
+            showButton
+        } = this.props;
+
+        let actualNumber = answeredQuestions.length;
+        const totalNumber = questions.length;
 
         return (
             <div className='question-container'>
@@ -20,7 +29,7 @@ class GameScreen extends Component {
                         <p>Points: {points}</p>
                     </div>
                     <div className='white-container'>
-                       <p className='number-question'>Question {answeredQuestions.length} / {questions.length}</p>
+                       <p className='number-question'>Question {actualNumber} / {totalNumber}</p>
                        <p className='theQuestion'>{oneQuestion.question}</p>
                        <img src={oneQuestion.picture} alt="Random gif that makes you laugh"/> 
                     </div>
@@ -31,11 +40,19 @@ class GameScreen extends Component {
                     <ol>
                         {oneQuestion.question && oneQuestion.answers.map((answer, index) => {
                         return (
-                                <li>
-                                    <button key={index}>{answer}</button>
+                                <li key={index}>
+                                    <button onClick={() => this.props.isCorrect(index)} className={style[index]}>{answer}</button>
                                 </li>
                         )})}  
                     </ol>
+                    {
+                        showButton ? 
+                        <div className='next-btn'>
+                            <button  onClick={this.props.nextQuestion}>{actualNumber === totalNumber ? 'Finish quiz' : '➡'}</button>
+                        </div> 
+                        : 
+                        null
+                    }
                 </div>
 
             </div>

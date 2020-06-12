@@ -158,3 +158,48 @@ body {
   font-weight: bold;
   color: rgb(136, 127, 127);
 }
+
+.answer {
+  padding: 8px 50px;
+  width: 50%;
+  margin-bottom: 15px;
+  font-weight: bold;
+  font-size: 15px;
+  background-color: rgb(255, 251, 251);
+  border: solid 1.5px rgb(224, 215, 215);
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.correct,
+.correct:focus {
+  color: rgb(61, 177, 61);
+  border-color: rgb(61, 177, 61);
+}
+
+.incorrect,
+.incorrect:focus {
+  color: rgb(201, 57, 57);
+  border-color: rgb(201, 57, 57);
+}
+
+.next-btn {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.next-btn button {
+  margin-right: 40px;
+  border: none;
+  font-size: 40px;
+  background-color: white;
+  font-weight: bold;
+  color: rgb(214, 51, 51);
+  cursor: pointer;
+  transition: linear 300ms;
+}
+
+.next-btn button:hover,
+.next-btn button:focus {
+  color: blueviolet;
+}
