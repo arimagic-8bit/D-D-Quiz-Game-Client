@@ -23,6 +23,7 @@ function QuestionConsumer(WrappedComponent) {
                         morePoints={valueFromProvider.morePoints}
                         isCorrect={valueFromProvider.isCorrect}
                         nextQuestion={valueFromProvider.nextQuestion}
+                        restartGame={valueFromProvider.restartGame}
                     />
                 )}
             </Consumer>
@@ -56,12 +57,18 @@ class QuestionProvider extends React.Component {
         const {questions, answeredQuestions} = this.state;
         const randomQuestion = questions[Math.floor(Math.random()*questions.length)];
         for (let i = 0; i<questions.length; i++) {
-            
-            if(answeredQuestions.length === 0 || answeredQuestions[i]._id !== randomQuestion._id) {
+
+            let someQuestion = (question) => question._id === randomQuestion._id;
+            let isThere = answeredQuestions.some(someQuestion);
+
+            if(answeredQuestions.length === 0 || !isThere) {
                const newAnswered = [...answeredQuestions];
                newAnswered.push(randomQuestion);
                this.setState({oneQuestion:randomQuestion, answeredQuestions:newAnswered});
                break; 
+            }
+            else {
+                return this.getRandomQuestion();
             }
         }
     }
@@ -100,6 +107,19 @@ class QuestionProvider extends React.Component {
         this.getRandomQuestion()
     }
 
+    restartGame = () => {
+        const resetStyle = ['answer', 'answer', 'answer'];
+        this.setState({
+            questions: [],
+            oneQuestion: {},
+            answeredQuestions:[],
+            points: 0,
+            style: resetStyle,
+            isAnswered: false,
+            showButton: false
+        });
+    }
+
     render() {
 
         const {
@@ -117,7 +137,8 @@ class QuestionProvider extends React.Component {
             getRandomQuestion, 
             morePoints, 
             isCorrect, 
-            nextQuestion
+            nextQuestion,
+            restartGame
         } = this;
 
         return (
@@ -133,7 +154,8 @@ class QuestionProvider extends React.Component {
                 getRandomQuestion, 
                 morePoints, 
                 isCorrect, 
-                nextQuestion
+                nextQuestion,
+                restartGame
                 }}>
                 {this.props.children}
             </Provider>

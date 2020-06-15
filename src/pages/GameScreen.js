@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import {QuestionConsumer} from './../lib/QuestionProvider'
+import {Link} from 'react-router-dom'
 
 
 class GameScreen extends Component {
@@ -48,7 +49,12 @@ class GameScreen extends Component {
                     {
                         showButton ? 
                         <div className='next-btn'>
-                            <button  onClick={this.props.nextQuestion}>{actualNumber === totalNumber ? 'Finish quiz' : '➡'}</button>
+                            {actualNumber === totalNumber ?
+                                <Link to={'/end'} className='finish'>Finish quiz!</Link>
+                               : 
+                                <button onClick={this.props.nextQuestion}>➡</button>
+
+                            }
                         </div> 
                         : 
                         null
