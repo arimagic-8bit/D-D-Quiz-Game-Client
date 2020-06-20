@@ -37,28 +37,36 @@ class GameScreen extends Component {
                     
                 </div>
                 <div className='answers-container'>
-                    <p>Select the correct answer</p>
-                    <ol>
-                        {oneQuestion.question && oneQuestion.answers.map((answer, index) => {
-                        return (
-                                <li key={index}>
-                                    <button onClick={() => this.props.isCorrect(index)} className={style[index]}>{answer}</button>
-                                </li>
-                        )})}  
-                    </ol>
-                    {
-                        showButton ? 
-                        <div className='next-btn'>
-                            {actualNumber === totalNumber ?
-                                <Link to={'/end'} className='finish'>Finish quiz!</Link>
-                               : 
-                                <button onClick={this.props.nextQuestion}>➡</button>
+                    <div className='p-container'>
+                        <p>Select the correct answer</p>
+                    </div>
+                    <div className='answer-part'>
+                        <div className='center-answer'>
+                            <ol>
+                                {oneQuestion.question && oneQuestion.answers.map((answer, index) => {
+                                return (
+                                        <li key={index}>
+                                            <button onClick={() => this.props.isCorrect(index)} className={style[index]}>{answer}</button>
+                                        </li>
+                                )})}  
+                            </ol>
+                            {
+                            showButton ? 
+                            <div className='next-btn'>
+                                {actualNumber === totalNumber ?
+                                    <Link to={'/end'} className='finish'>Finish quiz!</Link>
+                                : 
+                                    <button onClick={this.props.nextQuestion}>➡</button>
 
-                            }
-                        </div> 
-                        : 
-                        null
-                    }
+                                }
+                            </div> 
+                            : 
+                            null
+                        } 
+                        </div>
+                    </div>
+                    
+                    
                 </div>
 
             </div>

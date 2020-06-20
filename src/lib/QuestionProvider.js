@@ -45,7 +45,7 @@ class QuestionProvider extends React.Component {
 
     getAllQuestions = () => {
         axios
-        .get('http://localhost:5000/api')
+        .get(process.env.REACT_APP_API_URL + '/api')
         .then((response) => {
             this.setState({questions: response.data});
             this.getRandomQuestion()
