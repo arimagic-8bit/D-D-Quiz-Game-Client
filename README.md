@@ -65,6 +65,6 @@ Question model
 
 ------
 
-[Back-end]: https://github.com/arimagic-8bit/D-D-Quiz-Game-Server	"Backend"
-[Front-end]: https://github.com/arimagic-8bit/D-D-Quiz-Game-Client	"Frontend"
+[Back-end:](https://github.com/arimagic-8bit/D-D-Quiz-Game-Server) 
 
+[Front-end](https://github.com/arimagic-8bit/D-D-Quiz-Game-Client)
